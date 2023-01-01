@@ -7,17 +7,17 @@ import (
 )
 
 type Usuario struct {
-	ID       uint64    `json:"id, omitempty"`
-	Nome     string    `json:"nome, omitempty"`
-	Nick     string    `json:"nick, omitempty"`
-	Email    string    `json:"email, omitempty"`
-	Senha    string    `json:"senha, omitempty"`
-	CriadoEm time.Time `json:"CriadoEm, omitempty"`
+	ID       uint64    `json:"id"`
+	Nome     string    `json:"nome"`
+	Nick     string    `json:"nick"`
+	Email    string    `json:"email"`
+	Senha    string    `json:"senha"`
+	CriadoEm time.Time `json:"CriadoEm"`
 }
 
 // Preparar vai chamar os metodos para validar e formatar o usuario recebido
 func (usuario *Usuario) Preparar() error{
-	if erro := usuario.validar(); erro != nil{
+	if erro := usuario.Validar(); erro != nil{
 		return erro
 	}
 
@@ -26,7 +26,7 @@ func (usuario *Usuario) Preparar() error{
 
 }
 
-func (usuario *Usuario) validar() error{
+func (usuario *Usuario) Validar() error{
 	if usuario.Nome == ""{
 		return errors.New("O nome é obrigatório e não pode ficar em branco!")
 	}
